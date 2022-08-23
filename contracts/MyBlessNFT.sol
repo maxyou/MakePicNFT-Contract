@@ -10,37 +10,32 @@ import "hardhat/console.sol";
 // We need to import the helper functions from the contract that we copy/pasted.
 import { Base64 } from "./libraries/Base64.sol";
 
-contract MyEpicNFT is ERC721URIStorage {
+contract MyBlessNFT is ERC721URIStorage {
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
-  uint NftMaxNum = 100;
 
   string baseSvg = "<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMinYMin meet' viewBox='0 0 350 350'><style>.base { fill: white; font-family: serif; font-size: 24px; }</style><rect width='100%' height='100%' fill='black' /><text x='50%' y='50%' class='base' dominant-baseline='middle' text-anchor='middle'>";
 
-  // event NFTBrand(address sender, string brand);
+  // event NFTbless(address sender, string bless);
   // event NFTMark(address sender, string mark);
   // event NFTId(address sender, uint256 tokenId);
-  event NFTMintInfo(address sender, uint256 tokenId, string brand, string mark);
+  event NFTMintInfo(address sender, uint256 tokenId, string bless);
 
-  constructor() ERC721 ("SquareNFT", "SQUARE") {
-    console.log("This is my NFT contract. Woah!");
+  constructor() ERC721 ("Bless NFT", "BlessNFT") {
+    console.log("This is my bless NFT contract. Woah!");
   }
 
-  function getTokenId() public view returns (uint tokenId, uint MaxNum) {
-      //return _tokenIds.current();
-      tokenId = _tokenIds.current();
-      MaxNum = NftMaxNum;
-  }
+  // function getTokenId() public view returns (uint tokenId) {
+  //     tokenId = _tokenIds.current();      
+  // }
 
-  function makeAnEpicNFT(string memory brand) public {
+  function makeBlessNFT(string memory bless) public {
 
     uint256 newItemId = _tokenIds.current();
 
-    require(newItemId < NftMaxNum, "no more than NftMaxNum" );
-
-    //emit NFTBrand(msg.sender, brand);
-    string memory mark = string(abi.encodePacked(Strings.toString(newItemId+1)," of ",  Strings.toString(NftMaxNum), " : ", brand));
+    //emit NFTbless(msg.sender, bless);
+    string memory mark = string(abi.encodePacked(bless));
     //emit NFTMark(msg.sender, mark);
 
     string memory finalSvg = string(abi.encodePacked(baseSvg, mark,  "</text></svg>"));
@@ -81,6 +76,6 @@ contract MyEpicNFT is ERC721URIStorage {
     console.log("An NFT w/ ID %s has been minted to %s", newItemId, msg.sender);
 
     //emit NFTId(msg.sender, newItemId);
-    emit NFTMintInfo(msg.sender, newItemId, brand, mark);
+    emit NFTMintInfo(msg.sender, newItemId, bless);
   }
 }

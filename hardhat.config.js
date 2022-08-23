@@ -4,9 +4,9 @@ require('dotenv').config();
 module.exports = {
   solidity: '0.8.1',
   networks: {
-    rinkeby: {
-      url: process.env.STAGING_ALCHEMY_KEY,
-      accounts: [process.env.PRIVATE_KEY],
+    goerli: {
+      url: process.env.ALCHEMY_HTTPS_GOERLI,
+      accounts: [process.env.PRIVATE_KEY_GOERLI],
     },
   },
 };
