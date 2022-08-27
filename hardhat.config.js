@@ -8,5 +8,9 @@ module.exports = {
       url: process.env.ALCHEMY_HTTPS_GOERLI,
       accounts: [process.env.PRIVATE_KEY_GOERLI],
     },
+    rinkeby: {
+      url: process.env.ALCHEMY_HTTPS_RINKEBY,
+      accounts: [process.env.PRIVATE_KEY_RINKEBY],
+    },
   },
 };

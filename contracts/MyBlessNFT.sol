@@ -29,7 +29,7 @@ contract MyBlessNFT is ERC721URIStorage {
 
     uint256 newItemId = _tokenIds.current();
 
-    string memory json = 'https://jsonkeeper.com/b/TYL7';    
+    string memory json = 'https://jsonkeeper.com/b/NQ9V';    
     
     _safeMint(msg.sender, newItemId);
     
