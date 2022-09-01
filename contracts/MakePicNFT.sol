@@ -7,37 +7,28 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "hardhat/console.sol";
 
-
-contract MyBlessNFT is ERC721URIStorage {
+contract MakePicNFT is ERC721URIStorage {
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
-  // event NFTbless(address sender, string bless);
-  // event NFTMark(address sender, string mark);
-  // event NFTId(address sender, uint256 tokenId);
-  event NFTMintInfo(address sender, uint256 tokenId, string bless);
+  event NFTMintInfo(address sender, uint256 tokenId, string jsonUri);
 
-  constructor() ERC721 ("Bless NFT", "BlessNFT") {
-    console.log("This is my bless NFT contract. Woah!");
+  constructor() ERC721 ("MakePicNFT", "Make Pic NFT") {
+    console.log("Make my picture NFT. Woah!");
   }
 
-  // function getTokenId() public view returns (uint tokenId) {
-  //     tokenId = _tokenIds.current();      
-  // }
-
-  function makeBlessNFT(string memory jsonUri) public {
+  function makePicNFT(string memory jsonUri) public {
 
     uint256 newItemId = _tokenIds.current();    
     
     _safeMint(msg.sender, newItemId);
     
-    // Update your URI!!!
     _setTokenURI(newItemId, jsonUri);
   
     _tokenIds.increment();
+
     console.log("An NFT w/ ID %s has been minted to %s", newItemId, msg.sender);
 
-    //emit NFTId(msg.sender, newItemId);
     emit NFTMintInfo(msg.sender, newItemId, jsonUri);
   }
 }
