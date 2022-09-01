@@ -25,21 +25,19 @@ contract MyBlessNFT is ERC721URIStorage {
   //     tokenId = _tokenIds.current();      
   // }
 
-  function makeBlessNFT(string memory bless) public {
+  function makeBlessNFT(string memory jsonUri) public {
 
-    uint256 newItemId = _tokenIds.current();
-
-    string memory json = 'https://jsonkeeper.com/b/NQ9V';    
+    uint256 newItemId = _tokenIds.current();    
     
     _safeMint(msg.sender, newItemId);
     
     // Update your URI!!!
-    _setTokenURI(newItemId, json);
+    _setTokenURI(newItemId, jsonUri);
   
     _tokenIds.increment();
     console.log("An NFT w/ ID %s has been minted to %s", newItemId, msg.sender);
 
     //emit NFTId(msg.sender, newItemId);
-    emit NFTMintInfo(msg.sender, newItemId, bless);
+    emit NFTMintInfo(msg.sender, newItemId, jsonUri);
   }
 }
