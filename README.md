@@ -1,5 +1,9 @@
 # make picture NFT
 
-MakePicNFT inherit from ERC721URIStorage.
+Contract MakePicNFT inherit from ERC721URIStorage, which has a URI to store additional information.
 
-Mint function with params of URI which include the link to a picture.
+A web page is provide to input information and upload a picture, and then call to mint. 
+
+- Source: https://github.com/maxyou/MakePicNFT-App
+- Deployed: https://make-pic-nft-app.vercel.app/ 
+
